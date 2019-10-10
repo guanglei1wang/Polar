@@ -1,17 +1,17 @@
 language: cpp
 sudo: required
 before_install:
-- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-- sudo apt update
-- sudo apt-get install gcc-6 g++-6
-- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60
-- sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 60
-- sudo apt-get install build-essential gfortran pkg-config liblapack-dev libblas-dev
+  #- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  #- sudo apt update
+  #- sudo apt-get install gcc-6 g++-6
+  #- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60
+  #- sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 60
+  #- sudo apt-get install build-essential gfortran pkg-config liblapack-dev libblas-dev
 
 # To point to the new install
 - mkdir build && cd build && cmake .. 
 script:
-- make
-- ../bin/Debug/polar_test
+  #- make
+  #- ../bin/Debug/polar_test
   #after_success: 
   #- bash <(curl -s https://codecov.io/bash) -t 7a0a32a0-cc52-4460-9ec6-c4950095b532
