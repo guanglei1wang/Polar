@@ -3,7 +3,7 @@ message("Looking for CLP in ${CLP_ROOT_DIR} folder")
 
 find_path(CLP_INCLUDE_DIR  
     NAMES ClpSimplex.hpp 
-    HINTS ${CLP_ROOT_DIR}/include/coin/
+    HINTS ${CLP_ROOT_DIR}/include/clp/coin/
     )
 
 find_library(CLP_LIBRARY
@@ -11,7 +11,7 @@ find_library(CLP_LIBRARY
     HINTS ${CLP_ROOT_DIR}/lib/
     )
 find_library(UTILS_LIBRARY
-  NAMES libCoinUtils.dylib
+  NAMES libClpSolver..dylib
   HINTS ${CLP_ROOT_DIR}/lib/
   )
 
