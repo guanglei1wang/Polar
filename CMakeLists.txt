@@ -20,7 +20,11 @@ if (Clp MATCHES ON)
     find_package(CLP REQUIRED)
     include_directories(${CLP_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${CLP_LIBRARIES})
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lClp")
+    message(STATUS "I am trying to enable COINUTILS.......")
+    find_package(COINUTILS REQUIRED)
+    include_directories(${COINUTILS_INCLUDE_DIRS}/)
+    set(LIBS ${LIBS} ${COINUTILS_LIBRARIES})
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lClp -lCoinUtils")
 endif()
 
 
@@ -60,3 +64,6 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath,'\$ORIGIN/lib'"
 
 add_subdirectory(src)
 add_subdirectory(examples)
+
+#Get user defined configuration including passing project source directory into c++ code
+configure_file(Config.h.in)
