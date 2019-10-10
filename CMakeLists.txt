@@ -10,7 +10,7 @@ set(MACOSX_RPATH 1)
 
 
 # Find CLP (optional)
-option(Clp "Link to CLP libraries" ON)
+option(Clp "Link to CLP libraries" OFF)
 
 
 # Find CLP?
