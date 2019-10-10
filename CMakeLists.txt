@@ -10,18 +10,31 @@ set(MACOSX_RPATH 1)
 
 
 # Find CLP (optional)
-option(Clp "Link to CLP libraries" OFF)
+option(Clp "Link to CLP libraries" ON)
 
 
 # Find CLP?
-if (Clp)
-    message(STATUS "Enable CLP")
+if (Clp MATCHES ON)
+    message(STATUS "I am trying to enable CLP.......")
     add_definitions(-DUSE_CLP)
     find_package(CLP REQUIRED)
     include_directories(${CLP_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${CLP_LIBRARIES})
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lCoinUtils -lClp")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lClp")
 endif()
+
+
+# set paths 
+set(LIBS ${LIBS} ${PROJECT_SOURCE_DIR}/lib ${PROJECT_SOURCE_DIR}/lib/Release ${PROJECT_SOURCE_DIR}/lib/Debug)
+# Compiler options
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
+
+# Build options
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/Release)
+set(PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+set(PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/build)
 
 
 # Debug mode
@@ -31,5 +44,19 @@ option(Debug "Turn on debug mode" OFF)
 option(Cov "Turn on coverage" OFF)
 
 
-# set paths 
-set(LIBS ${LIBS} ${PROJECT_SOURCE_DIR}/lib ${PROJECT_SOURCE_DIR}/lib/Release ${PROJECT_SOURCE_DIR}/lib/Debug)
+set(CMAKE_BUILD_TYPE "Release")
+if (Debug)
+set(CMAKE_BUILD_TYPE "Debug")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/Debug)
+endif()
+
+if(Cov)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fprofile-arcs -lgcov")
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath,'\$ORIGIN/lib'")
+
+add_subdirectory(src)
+add_subdirectory(examples)
