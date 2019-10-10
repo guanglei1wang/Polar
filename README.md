@@ -1,2 +1,2 @@
 # Polar: a MILP solver featuring polar cuts 
-# Author: Guanglei Wang 
+Author: Guanglei Wang 
