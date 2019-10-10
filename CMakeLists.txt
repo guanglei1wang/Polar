@@ -37,7 +37,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/Release)
-set(PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+set(PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include/polar)
 set(PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/build)
 
 
@@ -66,4 +66,4 @@ add_subdirectory(src)
 add_subdirectory(examples)
 
 #Get user defined configuration including passing project source directory into c++ code
-configure_file(Config.h.in)
+configure_file(Config.h.in ${PROJECT_SOURCE_DIR}/include/polar/Config.h)

@@ -4,14 +4,26 @@
 
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include <stdio.h>
+#include <iostream>
+#include <string>
+#include <functional>
+#include <stdio.h>
+#include <cstring>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "doctest.h"
+#include "Config.h"
 #include "ClpSimplex.hpp"
 
 TEST_CASE("test clp"){
     ClpSimplex  model;
     int status;
+    std::string mpsfile=prj_dir"/data/hello.mps";
     // Keep names
-    status = model.readMps(string(prj_dir)+"hello.mps", true);
+    status = model.readMps(mpsfile.c_str(), true);
     if (status)
         exit(10);
     
