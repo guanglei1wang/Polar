@@ -57,3 +57,6 @@ TEST_CASE("test clp"){
     }
     printf("\n\n");
 }
+
+TEST_CASE("test cgl"){
+}

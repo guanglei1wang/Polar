@@ -10,7 +10,9 @@ set(MACOSX_RPATH 1)
 
 
 # Find CLP (optional)
-option(Clp "Link to CLP libraries" OFF)
+option(Clp "Link to CLP libraries" ON)
+option(Cgl "Link to CGL libraries" ON)
+option(Osi "Link to OSI libraries" ON)
 
 
 # Find CLP?
@@ -25,6 +27,24 @@ if (Clp MATCHES ON)
     include_directories(${COINUTILS_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${COINUTILS_LIBRARIES})
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lClp -lCoinUtils")
+endif()
+
+# Find CGL? 
+if (Cgl MATCHES ON)
+    message(STATUS "I am trying to enable CGL.......")
+    find_package(CGL REQUIRED)
+    include_directories(${CGL_INCLUDE_DIRS}/)
+    set(LIBS ${LIBS} ${CGL_LIBRARIES})
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lOsi")
+endif()
+
+# Find Osi?
+if (Osi MATCHES ON)
+    message(STATUS "I am trying to enable OSI.......")
+    find_package(OSI REQUIRED)
+    include_directories(${OSI_INCLUDE_DIRS}/)
+    set(LIBS ${LIBS} ${OSI_LIBRARIES})
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lOsi")
 endif()
 
 
