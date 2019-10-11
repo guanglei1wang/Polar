@@ -35,7 +35,7 @@ if (Cgl MATCHES ON)
     find_package(CGL REQUIRED)
     include_directories(${CGL_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${CGL_LIBRARIES})
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lOsi")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lCgl")
 endif()
 
 # Find Osi?
@@ -44,7 +44,7 @@ if (Osi MATCHES ON)
     find_package(OSI REQUIRED)
     include_directories(${OSI_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${OSI_LIBRARIES})
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lOsi")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lOsi -lOsiClp")
 endif()
 
 
