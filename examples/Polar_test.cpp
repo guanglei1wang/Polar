@@ -17,16 +17,23 @@
 #include "doctest.h"
 #include "Config.h"
 
+#ifdef USE_CLP
 #include "ClpSimplex.hpp"
+#endif
 
+#ifdef USE_OSI
 #include "OsiSolverInterface.hpp"
 #include "OsiClpSolverInterface.hpp"
+#endif
 
+#ifdef USE_CGL
 #include "CglRedSplit.hpp"
 #include "CglRedSplit2.hpp"
+#endif
 
 
 
+#ifdef USE_CLP
 TEST_CASE("test clp simplex"){
     ClpSimplex  model;
     int status;
@@ -66,8 +73,10 @@ TEST_CASE("test clp simplex"){
     }
     printf("\n\n");
 }
+#endif
 
 
+#ifdef USE_OSI
 TEST_CASE("test Osi"){
     // Create a problem pointer.  We use the base class here.
     OsiSolverInterface *si;
@@ -137,8 +146,10 @@ TEST_CASE("test Osi"){
             std::cout << "Reached iteration limit." << std::endl;
     }
 }
+#endif
 
 
+#ifdef USE_CGL
 TEST_CASE("test cgl"){
     char *f_name_lp, f_name[256], *f_name_pos;
     int i, ncol;
@@ -304,6 +315,7 @@ TEST_CASE("test cgl"){
     }
     free(f_name_lp);
 }
+#endif
 
 TEST_CASE(""){
 }
