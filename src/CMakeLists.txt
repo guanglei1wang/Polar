@@ -13,9 +13,9 @@ include_directories(${PROJECT_INCLUDE_DIR})
 file(GLOB HEADERS ${PROJECT_INCLUDE_DIR} *.h)
 file(GLOB SOURCES . *.cpp ${PROJECT_INCLUDE_DIR}/polar/*.h)
 
-if (NOT Clp)
-    list(REMOVE_ITEM SOURCES ${PROJECT_SOURCE_DIR}/src/ClpProgram.cpp)
-endif()
+#if (NOT Clp)
+#    list(REMOVE_ITEM SOURCES ${PROJECT_SOURCE_DIR}/src/ClpProgram.cpp)
+#endif()
 
 
 

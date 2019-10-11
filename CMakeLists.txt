@@ -13,6 +13,7 @@ set(MACOSX_RPATH 1)
 option(Clp "Link to CLP libraries" ON)
 option(Cgl "Link to CGL libraries" ON)
 option(Osi "Link to OSI libraries" ON)
+option(Cbc "Link to CBC libraries" ON)
 
 
 # Find CLP?
@@ -47,6 +48,16 @@ if (Osi MATCHES ON)
     include_directories(${OSI_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${OSI_LIBRARIES})
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lOsi -lOsiClp")
+endif()
+
+# Find CBC?
+if (CBC MATCHES ON)
+  message(STATUS "I am trying to enable CBC library.......")
+    add_definitions(-DUSE_CBC)
+    find_package(CBC REQUIRED)
+    include_directories(${CBC_INCLUDE_DIRS}/)
+    set(LIBS ${LIBS} ${CBC_LIBRARIES})
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lCbc")
 endif()
 
 
