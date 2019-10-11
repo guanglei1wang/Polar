@@ -22,6 +22,9 @@
 #include "OsiSolverInterface.hpp"
 #include "OsiClpSolverInterface.hpp"
 
+#include "CglRedSplit.hpp"
+#include "CglRedSplit2.hpp"
+
 
 
 TEST_CASE("test clp simplex"){
@@ -137,7 +140,7 @@ TEST_CASE("test Osi"){
 
 
 TEST_CASE("test cgl"){
-    char *f_name_lp, *last_dot_pos, f_name[256], *f_name_pos;
+    char *f_name_lp, f_name[256], *f_name_pos;
     int i, ncol;
     std::string mpsfile=prj_dir"/data/Sample/p0033.mps";
 
@@ -149,10 +152,10 @@ TEST_CASE("test cgl"){
     else {
         strcpy(f_name, f_name_lp);
     }
-    last_dot_pos = strrchr(f_name, '.');
-    if(last_dot_pos != NULL) {
-        last_dot_pos = '\0';
-    }
+    //last_dot_pos = strrchr(f_name, '.');
+    //if(last_dot_pos != NULL) {
+    //    last_dot_pos = '\0';
+    //}
     
     // Do for both RedSplit and RedSplit2
     {
