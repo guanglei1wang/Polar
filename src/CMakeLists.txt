@@ -11,19 +11,19 @@ include_directories(${PROJECT_INCLUDE_DIR})
 #SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib:'$ORIGIN/lib'")
 
 file(GLOB HEADERS ${PROJECT_INCLUDE_DIR} *.h)
-file(GLOB SOURCES . *.cpp ${PROJECT_INCLUDE_DIR}/polar/*.h)
+file(GLOB SOURCES ./Cbc/*/ *.cpp ${PROJECT_INCLUDE_DIR}/Cbc/*/ *.h)
 
-#if (NOT Clp)
-#    list(REMOVE_ITEM SOURCES ${PROJECT_SOURCE_DIR}/src/ClpProgram.cpp)
+
+#if(Cov)
+#  set_target_properties(Polar
+#  PROPERTIES
+#    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
+#    LINK_FLAGS    "-lgcov --coverage -fprofile-arcs"
+#  )
 #endif()
 
 
 
-if(Cov)
-  set_target_properties(polar
-  PROPERTIES
-    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
-    LINK_FLAGS    "-lgcov --coverage -fprofile-arcs"
-  )
-endif()
-
+add_library(Polar STATIC ${SOURCES} ${HEADERS})
+#target_link_libraries(Polar ${OSI_LIBRARIES}  ${CLP_LIBRARIES} ${CGL_LIBRARIES})
+set_target_properties(Polar PROPERTIES LINKER_LANGUAGE CXX)
