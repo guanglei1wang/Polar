@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "doctest.h"
-#include "Config.h"
+#include <polar/doctest.h>
+#include <polar/Config.h>
 
 #ifdef USE_CLP
 #include "ClpSimplex.hpp"
