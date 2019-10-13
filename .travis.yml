@@ -8,10 +8,18 @@ before_install:
 - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 60
 - sudo apt-get install build-essential gfortran pkg-config liblapack-dev libblas-dev
 - sudo apt-get install Cbc
-
-
 # To point to the new install
-- mkdir build && cd build && cmake .. 
+- wget --tries=40 --retry-connrefused --waitretry=1 --no-check-certificate https://www.coin-or.org/download/source/Cbc/Cbc-2.10.2.tgz
+- tar xvzf Cbc-2.10.2.tgz
+- mkdir third_party
+- mv Cbc-2.10.2 ./third_party/Cbc/
+- cd ./third_party/Cbc/
+- mkdir build
+- cd build
+- "../configure"
+- make -j5
+- make test
+- sudo make install
 script:
   #- make
   #- ../bin/Debug/polar_test
