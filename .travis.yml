@@ -7,7 +7,6 @@ before_install:
 - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60
 - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 60
 - sudo apt-get install build-essential gfortran pkg-config liblapack-dev libblas-dev
-- sudo apt-get install Cbc
 # To point to the new install
 - wget --tries=40 --retry-connrefused --waitretry=1 --no-check-certificate https://www.coin-or.org/download/source/Cbc/Cbc-2.10.2.tgz
 - tar xvzf Cbc-2.10.2.tgz
