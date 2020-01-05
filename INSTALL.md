@@ -28,13 +28,13 @@ Follow these simple instructions:
 
 For instance, I have the following: 
 
-* `export CLP_ROOT_DIR="/Users/hh/Dev/CoinIpopt/build"`
+* `export COINUTILS_ROOT_DIR="/usr/local/Cellar/coinutils/2.11.2/"`
 
-* `export CGL_ROOT_DIR="/Users/hh/mosek/8/tools/platform/osx64x86"`
+* `export OSI_ROOT_DIR="/usr/local/Cellar/osi/0.108.4/"`
 
-* `export COINUTILS_ROOT_DIR="/Users/hh/mosek/8/tools/platform/osx64x86"`
+* `export CLP_ROOT_DIR="/usr/local/Cellar/clp/1.17.2/"`
 
-* `export CBC_ROOT_DIR="/Users/hh/mosek/8/tools/platform/osx64x86"`
+* `export CGL_ROOT_DIR="/usr/local/Cellar/cgl/0.60.2/"`
 
 Note: For [Mosek](https://www.mosek.com/downloads/details/10/), refer to [mosek-setup](https://www.google.com.au/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjy0sja6oLWAhXEwLwKHQR_A5YQFggoMAA&url=http%3A%2F%2Fdocs.mosek.com%2F8.1%2Finstall%2Finstallation.html&usg=AFQjCNGEiUPE05E_5_UedXe1mmpCYOimrQ) for general setup and license information. 
  
