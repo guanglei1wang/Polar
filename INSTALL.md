@@ -2,6 +2,13 @@ DEPENDENCIES
 -------
 cmake: http://www.cmake.org (Version 3.2 or better)
 
+1. brew tap coin-or-tools/coinor
+
+2. brew install cbc 
+
+If you encounter the message "Xcode xx is outdated", please refer to stack [overflow](https://stackoverflow.com/questions/40296756/homebrew-saying-xcode-is-outdated) 
+for reference. 
+
 OPTIONAL
 -------
 CLP
