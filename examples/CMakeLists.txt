@@ -17,12 +17,15 @@ include_directories(
 
 # the RPATH to be used when installing, but only if it's not a system directory file(GLOB HEADERS_LINK ${PROJECT_SOURCE_DIR}/examples/nonlinear/*.h)
 file(GLOB SOURCE_LINK ${PROJECT_SOURCE_DIR}/examples/nonlinear/*.cpp)
+file(GLOB SOURCE_GEAR ${PROJECT_SOURCE_DIR}/examples/gear/*.cpp)
 
 add_executable(polar_test ${PROJECT_SOURCE_DIR}/examples/Polar_test.cpp)
 add_executable(link  ${SOURCE_LINK} ${HEADERS_LINK})
+add_executable(gear ${SOURCE_GEAR} ${HEADERS_GEAR})
 #add_executable(default ${PROJECT_SOURCE_DIR}/examples/default.cpp)
 
 #target_link_libraries(polar_test polar)
 target_link_libraries(polar_test)
 #target_link_libraries(default)
 target_link_libraries(link polar)
+target_link_libraries(gear polar)

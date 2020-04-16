@@ -32,9 +32,8 @@ include_directories(
 file(GLOB HEADERS ${PROJECT_INCLUDE_DIR}/Cbc/*/ *.h)
 file(GLOB_RECURSE SOURCES ./Cbc/*/*.cpp ${PROJECT_INCLUDE_DIR}/Cbc/*/*.h)
 
-message(STATUS "include HEADERS"  ${HEADERS})
 add_library(polar STATIC ${SOURCES} ${HEADERS})
-target_link_libraries(polar ${OSI_LIBRARIES}/*  ${CLP_LIBRARIES}/* ${CGL_LIBRARIES}/*)
+target_link_libraries(polar ${CLP_LIBRARIES} ${OSI_LIBRARIES} ${CGL_LIBRARIES}  ${CBC_LIBRARIES})
 set_target_properties(polar PROPERTIES LINKER_LANGUAGE CXX)
 
 
