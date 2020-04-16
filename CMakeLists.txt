@@ -2,12 +2,11 @@
 # Time:  Thu Oct 10 15:19:31 CST 2019
 cmake_minimum_required(VERSION 3.2)
 
-project(Polar)
+project(polar)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
 set(MACOSX_RPATH 1)
-
 
 # Find CLP (optional)
 option(Clp "Link to CLP libraries" ON)
@@ -24,6 +23,7 @@ if (Clp MATCHES ON)
     find_package(CLP REQUIRED)
     include_directories(${CLP_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${CLP_LIBRARIES})
+    message(STATUS "The associated LIBS are: " ${LIBS})
     message(STATUS "I am trying to enable COINUTILS.......")
     find_package(COINUTILS REQUIRED)
     include_directories(${COINUTILS_INCLUDE_DIRS}/)
@@ -38,6 +38,7 @@ if (Cgl MATCHES ON)
     find_package(CGL REQUIRED)
     include_directories(${CGL_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${CGL_LIBRARIES})
+message(STATUS "The associated LIBS are: " ${LIBS})
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lCgl")
 endif()
 
@@ -48,22 +49,25 @@ if (Osi MATCHES ON)
     find_package(OSI REQUIRED)
     include_directories(${OSI_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${OSI_LIBRARIES})
+message(STATUS "The associated LIBS are: " ${LIBS})
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lOsi -lOsiClp")
 endif()
 
 # Find CBC?
 if (CBC MATCHES ON)
-  message(STATUS "I am trying to enable CBC library.......")
+    message(STATUS "I am trying to enable CBC library.......")
     add_definitions(-DUSE_CBC)
     find_package(CBC REQUIRED)
     include_directories(${CBC_INCLUDE_DIRS}/)
     set(LIBS ${LIBS} ${CBC_LIBRARIES})
+    message(STATUS "The associated LIBS are: " ${LIBS})
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lCbc")
 endif()
 
-
-# set paths 
+message(STATUS "The associated LIBS are: " ${LIBS})
 set(LIBS ${LIBS} ${PROJECT_SOURCE_DIR}/lib ${PROJECT_SOURCE_DIR}/lib/Release ${PROJECT_SOURCE_DIR}/lib/Debug)
+#set(LIBS ${LIBS} ${PROJECT_SOURCE_DIR}/lib ${PROJECT_SOURCE_DIR}/lib/Release ${PROJECT_SOURCE_DIR}/lib/Debug)
+#set(LIBS ${LIBS} ${PROJECT_SOURCE_DIR}/lib ${PROJECT_SOURCE_DIR}/lib/Debug)
 # Compiler options
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
 
@@ -95,8 +99,10 @@ endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath,'\$ORIGIN/lib'")
 
+#subdirectories 
 add_subdirectory(src)
 add_subdirectory(examples)
+add_subdirectory(solvers)
 
 #Get user defined configuration including passing project source directory into c++ code
 configure_file(Config.h.in ${PROJECT_SOURCE_DIR}/include/polar/Config.h)

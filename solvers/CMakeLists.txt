@@ -1,4 +1,4 @@
-nclude_directories(${PROJECT_INCLUDE_DIR})
+include_directories(${PROJECT_INCLUDE_DIR})
 
 include_directories(
   ${PROJECT_INCLUDE_DIR}/Cbc/
@@ -14,6 +14,7 @@ include_directories(
 # add the automatically determined parts of the RPATH
 # which point to directories outside the build tree to the install RPATH
 #SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
 # the RPATH to be used when installing, but only if it's not a system directory
 file(GLOB HEADERS ${PROJECT_SOURCE_DIR}/solvers/*.h)
 

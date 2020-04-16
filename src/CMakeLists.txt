@@ -33,9 +33,9 @@ file(GLOB HEADERS ${PROJECT_INCLUDE_DIR}/Cbc/*/ *.h)
 file(GLOB_RECURSE SOURCES ./Cbc/*/*.cpp ${PROJECT_INCLUDE_DIR}/Cbc/*/*.h)
 
 message(STATUS "include HEADERS"  ${HEADERS})
-add_library(Polar STATIC ${SOURCES} ${HEADERS})
-target_link_libraries(Polar ${OSI_LIBRARIES}/*  ${CLP_LIBRARIES}/* ${CGL_LIBRARIES}/*)
-set_target_properties(Polar PROPERTIES LINKER_LANGUAGE CXX)
+add_library(polar STATIC ${SOURCES} ${HEADERS})
+target_link_libraries(polar ${OSI_LIBRARIES}/*  ${CLP_LIBRARIES}/* ${CGL_LIBRARIES}/*)
+set_target_properties(polar PROPERTIES LINKER_LANGUAGE CXX)
 
 
 SET(CMAKE_SKIP_BUILD_RPATH  FALSE)

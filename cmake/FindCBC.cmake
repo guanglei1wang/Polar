@@ -1,27 +1,32 @@
-set(CLP_ROOT_DIR "$ENV{CLP_ROOT_DIR}" CACHE PATH "CLP root directory.")
-message("Looking for CLP in ${CLP_ROOT_DIR} folder")
+set(CBC_ROOT_DIR "$ENV{CBC_ROOT_DIR}" CACHE PATH "CBC root directory.")
+message("Looking for CBC in ${CBC_ROOT_DIR} folder")
 
-find_path(CLP_INCLUDE_DIR  
+find_path(CBC_INCLUDE_DIR  
     NAMES ClpSimplex.hpp 
-    HINTS ${CLP_ROOT_DIR}/include/clp/coin/
+    HINTS ${CBC_ROOT_DIR}/include/clp/coin/
     )
 
-find_library(CLP_LIBRARY
-    NAMES libClp.dylib
-    HINTS ${CLP_ROOT_DIR}/lib/
+find_library(CBC_LIBRARY1
+    NAMES libCbc.dylib
+    HINTS ${CBC_ROOT_DIR}/lib/
+    )
+
+find_library(CBC_LIBRARY1
+    NAMES libOsiCbc.dylib
+    HINTS ${CBC_ROOT_DIR}/lib/
     )
 
 include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(CLP DEFAULT_MSG CLP_LIBRARY CLP_INCLUDE_DIR)
+find_package_handle_standard_args(CBC DEFAULT_MSG CBC_LIBRARY CBC_INCLUDE_DIR)
 
-if(CLP_FOUND)
-    message("—- Found CLP under ${CLP_INCLUDE_DIR}")
-    set(CLP_INCLUDE_DIRS ${CLP_INCLUDE_DIR})
-    set(CLP_LIBRARIES ${CLP_LIBRARY}  ${CLP_ROOT_DIR}/lib)
-    link_directories(${CLP_ROOT_DIR}/lib/)
+if(CBC_FOUND)
+    message("—- Found CBC under ${CBC_INCLUDE_DIR}")
+    set(CBC_INCLUDE_DIRS ${CBC_INCLUDE_DIR})
+    set(CBC_LIBRARIES ${CBC_LIBRARY})
+    link_directories(${CBC_ROOT_DIR}/lib/)
     if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-        set(CLP_LIBRARIES "${CLP_LIBRARIES};m;pthread")
+        set(CBC_LIBRARIES "${CBC_LIBRARIES};m;pthread")
     endif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-endif(CLP_FOUND)
+endif(CBC_FOUND)
 
-mark_as_advanced(CLP_LIBRARY CLP_INCLUDE_DIR)
+mark_as_advanced(CBC_LIBRARY CBC_INCLUDE_DIR)
