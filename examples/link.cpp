@@ -9,7 +9,7 @@
 #include "CoinPragma.hpp"
 // For Branch and bound
 #include "OsiSolverInterface.hpp"
-#include "CbcModel.hpp"
+#include "Polar/Core/CbcModel.hpp"
 #include "CoinModel.hpp"
 // For Linked Ordered Sets
 #include "CbcBranchLink.hpp"
