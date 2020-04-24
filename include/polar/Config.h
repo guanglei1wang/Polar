@@ -1,2 +1,2 @@
-#define prj_dir "/Users/guanglei.wgl/proj/Polar"
+#define prj_dir "/Users/jing/Polar"
 #define COIN_HAS_CLP

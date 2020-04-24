@@ -508,7 +508,7 @@ int CbcBranchDynamicDecision::betterBranch(CbcBranchingObject *thisOne,
     }
 #endif
   } else {
-#define TRY_STUFF 2
+#define TRY_STUFF 1
 #if TRY_STUFF > 1
     // Get current number of infeasibilities, cutoff and current objective
     CbcNode *node = model->currentNode();

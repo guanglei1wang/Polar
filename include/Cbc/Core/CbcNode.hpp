@@ -252,7 +252,7 @@ public:
   {
     depth_ = value;
   }
-  /// Get the number of objects unsatisfied at this node.
+  /// Get the number  of objects unsatisfied at this node.
   inline int numberUnsatisfied() const
   {
     return numberUnsatisfied_;
