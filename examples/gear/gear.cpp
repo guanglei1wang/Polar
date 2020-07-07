@@ -74,6 +74,7 @@ Constructor/Destructor
 branch - does actual fixing
 print - optional for debug purposes.
 
+ 
 The easiest way to do this is to cut and paste from CbcBranchActual to get current
 SOS stuff and then modify that.
 
